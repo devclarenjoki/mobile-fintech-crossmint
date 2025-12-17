@@ -1,7 +1,6 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import CrossmintProviders from './providers/CrossmintProviders';
@@ -26,7 +25,7 @@ export default function RootLayout() {
           <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         </Stack>
         </ToastProvider>
-        <StatusBar style="auto" />
+        {/* <StatusBar style="auto" /> */}
       </CrossmintProviders>
     </ThemeProvider>
   );
