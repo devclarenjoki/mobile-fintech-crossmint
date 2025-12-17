@@ -14,12 +14,13 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/crossmint-icon.png",
+        "backgroundImage": "./assets/images/crossmint-icon.png",
+        "monochromeImage": "./assets/images/crossmint-icon.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.kafkaesquea001.xMintmobile"
     },
     "web": {
       "output": "static",
@@ -30,7 +31,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/crossmint-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
@@ -45,7 +46,11 @@
       "reactCompiler": true
     },
     "extra": {
-      "apiKey": "process.env.EXPO_PUBLIC_API_URL"
+      "apiKey": "process.env.EXPO_PUBLIC_API_URL",
+      "router": {},
+      "eas": {
+        "projectId": "098391db-59f2-4bbb-b4a0-e8722d16161b"
+      }
     }
   }
 }
