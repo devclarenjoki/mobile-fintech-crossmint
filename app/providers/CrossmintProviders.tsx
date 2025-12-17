@@ -4,17 +4,21 @@ import {
     CrossmintWalletProvider,
 } from "@crossmint/client-sdk-react-native-ui";
 
-  const apiUrl: any = process.env.EXPO_PUBLIC_API_URL;
-
-
 type ProvidersProps = {
     children: React.ReactNode;
 };
 
+// 1. Type it as a string
+const apiKey = process.env.EXPO_PUBLIC_API_URL as string;
+
 export default function CrossmintProviders({ children }: ProvidersProps) {
+    // 2. Add a simple guard clause for development sanity
+    if (!apiKey) {
+        console.error("Crossmint Error: EXPO_PUBLIC_API_URL is not defined in your environment variables.");
+    }
 
     return (
-        <CrossmintProvider apiKey={apiUrl && apiUrl}>
+        <CrossmintProvider apiKey={apiKey}>
             <CrossmintAuthProvider>
                 <CrossmintWalletProvider
                     createOnLogin={{
