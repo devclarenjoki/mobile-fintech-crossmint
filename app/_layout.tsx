@@ -22,6 +22,10 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="login" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="send" options={{ headerShown: false }} />
+          <Stack.Screen name="receive" options={{ headerShown: false }} />
+          <Stack.Screen name="history" options={{ headerShown: false }} />
+          <Stack.Screen name="buy" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         </Stack>
         </ToastProvider>

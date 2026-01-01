@@ -1,7 +1,7 @@
 import { useTheme } from "@react-navigation/native";
 import React, { createContext, useContext, useRef, useState } from "react";
-// 1. Added useWindowDimensions and Platform for better positioning
-import { Animated, Platform, SafeAreaView, StyleSheet, Text } from "react-native";
+import { Animated, Platform, StyleSheet, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type ToastType = "success" | "error" | "info";
 
@@ -11,20 +11,18 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export function ToastProvider({ children }: { children: React.ReactNode }) {
   const { colors } = useTheme();
   const [message, setMessage] = useState("");
   const [type, setType] = useState<ToastType>("info");
   
-  // 2. Added translateY for a "slide down" effect
   const opacity = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(-20)).current;
 
-  const showToast = (msg: string, toastType: ToastType = "info") => {
+  function showToast(msg: string, toastType: ToastType = "info") {
     setMessage(msg);
     setType(toastType);
 
-    // Slide down and fade in, then slide up and fade out
     Animated.sequence([
       Animated.parallel([
         Animated.timing(opacity, { toValue: 1, duration: 300, useNativeDriver: true }),
@@ -36,18 +34,17 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         Animated.timing(translateY, { toValue: -20, duration: 500, useNativeDriver: true }),
       ]),
     ]).start();
-  };
+  }
 
-  const getBackgroundColor = () => {
+  function getBackgroundColor() {
     if (type === "success") return "#05b959";
     if (type === "error") return "#ff4444";
     return colors.card;
-  };
+  }
 
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      {/* 3. Wrap in a View that starts from the top */}
       <SafeAreaView pointerEvents="none" style={styles.topWrapper}>
         <Animated.View 
             style={[
@@ -64,26 +61,27 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       </SafeAreaView>
     </ToastContext.Provider>
   );
-};
+}
 
-export const useToast = () => {
+export function useToast() {
   const context = useContext(ToastContext);
-  if (!context) throw new Error("useToast must be used within a ToastProvider");
+  if (!context) {
+    throw new Error("useToast must be used within a ToastProvider");
+  }
   return context;
-};
+}
 
 const styles = StyleSheet.create({
-  // Container that holds the toast at the top
   topWrapper: {
     position: "absolute",
-    top: Platform.OS === "ios" ? 10 : 40, // Adjust for Android status bar
+    top: Platform.OS === "ios" ? 10 : 40,
     left: 0,
     right: 0,
     alignItems: "center",
     zIndex: 9999,
   },
   toastContainer: {
-    width: '90%', // Make it look like a floating pill
+    width: '90%',
     padding: 16,
     borderRadius: 12,
     elevation: 5,

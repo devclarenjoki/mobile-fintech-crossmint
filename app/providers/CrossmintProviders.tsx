@@ -9,7 +9,7 @@ type ProvidersProps = {
 };
 
 // 1. Type it as a string
-const apiKey = process.env.EXPO_PUBLIC_API_URL as string;
+const apiKey = process.env.EXPO_PUBLIC_API_CLIENT_URL as string;
 
 export default function CrossmintProviders({ children }: ProvidersProps) {
     // 2. Add a simple guard clause for development sanity
