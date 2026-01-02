@@ -1,4 +1,4 @@
-import { ReceiveComponent } from "@/components/Dasboard/ReceiveComponent";
+import { ReceiveComponent } from "@/components/Dasboard/receive";
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from "@react-navigation/native";
 import { useLocalSearchParams, useRouter } from "expo-router"; // Import this

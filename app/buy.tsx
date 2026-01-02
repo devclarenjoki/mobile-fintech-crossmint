@@ -1,9 +1,9 @@
-import { ThemedText } from "@/components/themed-text";
+import BuyCrypto from "@/components/Dasboard/BuyCrypto";
 
 export default function BuyLayout() {
     return(
         <>
-        <ThemedText>Buy Screen - Coming Soon!</ThemedText>
+        <BuyCrypto/>
         </>
     )
 }

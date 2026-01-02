@@ -1,7 +1,6 @@
 import React from "react";
 import { Pressable, Share, StyleSheet, Text, View } from "react-native";
-// Note: You would typically use react-native-qrcode-svg here
-// 
+import QRCodeStyled from 'react-native-qrcode-styled';
 
 export const ReceiveComponent = ({ address }: { address: string | string[] | undefined }) => {
     // Ensure we have a string for the Share API
@@ -16,8 +15,15 @@ export const ReceiveComponent = ({ address }: { address: string | string[] | und
         <View style={styles.container}>
             <Text style={styles.title}>Your Wallet Address</Text>
             <View style={styles.qrPlaceholder}>
-                <Text style={{color: '#666'}}>QR Code Ready</Text>
+              <QRCodeStyled
+              data={address}
+              style={{ backgroundColor: 'white', borderRadius:20 }}
+              padding={20}
+            />
             </View>
+            {/* <View style={styles.qrPlaceholder}>
+                <Text style={{color: '#666'}}>QR Code Ready</Text>
+            </View> */}
             <View style={styles.addressBox}>
                 <Text style={styles.addressText}>{address}</Text>
             </View>

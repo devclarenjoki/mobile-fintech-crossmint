@@ -1,30 +1,27 @@
-import { SendComponent } from '@/components/Dasboard/send/SendComponent';
+import { SendComponent } from '@/components/Dasboard/send/send';
+import Header from '@/components/ui/header';
 import { useWallet } from "@crossmint/client-sdk-react-native-ui";
-import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@react-navigation/native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SendScreen() {
     const { colors } = useTheme();
     const router = useRouter();
     const { usdcBalance } = useLocalSearchParams<{ usdcBalance: string }>();
-    
+
     // It's often safer to call the hook again to get the wallet object 
     // rather than passing the whole complex object through route params.
     const { wallet } = useWallet();
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-            <View style={styles.header}>
-                <Pressable onPress={() => router.back()} style={styles.backButton}>
-                    <Ionicons name="chevron-back" size={28} color={colors.text} />
-                </Pressable>
-                <Text style={[styles.title, { color: colors.text }]}>Send USDC</Text>
-                <View style={{ width: 40 }} /> 
-            </View>
+            <Header
+                title="Send USDC"
+                colors={colors}
+            />
             <View style={{ flex: 1 }}>
                 {wallet ? (
                     <SendComponent wallet={wallet} usdcBalance={usdcBalance ?? "0"} />
