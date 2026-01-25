@@ -216,44 +216,6 @@ export default function DashboardScreen() {
                     ))}
                 </View>
 
-                {/* --- NEW: DEPOSIT AND WITHDRAW SECTION --- */}
-                <View style={styles.sectionHeader}>
-                    <Text style={[styles.sectionTitle, { color: colors.text }]}>Transfer Funds</Text>
-                </View>
-                <View style={styles.fundManagementRow}>
-                    {/* Deposit Button */}
-                    <Pressable 
-                        style={[styles.fundCard, { backgroundColor: dark ? '#1c1c1e' : '#fff', borderColor: BRAND_GREEN }]} 
-                        onPress={handleCopyAddress}
-                    >
-                        <View style={[styles.fundIconCircle, { backgroundColor: BRAND_GREEN + '20' }]}>
-                            <Ionicons name="arrow-down" size={24} color={BRAND_GREEN} />
-                        </View>
-                        <View>
-                            <Text style={[styles.fundTitle, { color: colors.text }]}>Deposit</Text>
-                            <Text style={[styles.fundSubtitle, { color: colors.text }]}>
-                                {isCopied ? "Copied!" : "Copy Address"}
-                            </Text>
-                        </View>
-                    </Pressable>
-
-                    {/* Withdraw Button */}
-                    <Pressable 
-                        style={[styles.fundCard, { backgroundColor: dark ? '#1c1c1e' : '#fff', borderColor: colors.border }]} 
-                        onPress={handleWithdraw}
-                    >
-                        <View style={[styles.fundIconCircle, { backgroundColor: '#ff444420' }]}>
-                            <Ionicons name="arrow-up" size={24} color="#ff4444" />
-                        </View>
-                        <View>
-                            <Text style={[styles.fundTitle, { color: colors.text }]}>Withdraw</Text>
-                            <Text style={[styles.fundSubtitle, { color: colors.text }]}>
-                                Send USDC
-                            </Text>
-                        </View>
-                    </Pressable>
-                </View>
-
                 {/* STAGING FUNDS BUTTON */}
                 <Pressable 
                     style={[styles.stagingButton, { opacity: isFunding ? 0.7 : 1 }]} 

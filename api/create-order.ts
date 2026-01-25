@@ -12,7 +12,7 @@ export const createOrder = async (walletAddress: string, email: string, chain: s
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "X-API-KEY": process.env.EXPO_PUBLIC_API_SERVER_URL!, // Server-side key
+            "X-API-KEY": process.env.EXPO_PUBLIC_API_SERVER_KEY!,
         },
         body: JSON.stringify({
             lineItems: [{

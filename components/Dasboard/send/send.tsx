@@ -374,7 +374,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#000',
     },
     otpInputError: { borderColor: '#ff4444' },
-    // errorText: { color: '#ff4444', marginTop: 10, fontSize: 13 },
     modalButtons: { flexDirection: 'row', gap: 12, marginTop: 25, width: '100%' },
     modalButton: { 
         flex: 1, 
