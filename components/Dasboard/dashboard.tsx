@@ -58,7 +58,7 @@ export default function DashboardScreen() {
             console.log("Fetched balances:", balances);
             setUsdcBalance(getBalanceFromResponse(balances));
         } catch (err) {
-            console.error("Error fetching USDC balance:", err);
+            // console.error("Error fetching USDC balance:", err);
         } finally {
             isFetchingBalance.current = false;
             setIsLoadingBalance(false);
