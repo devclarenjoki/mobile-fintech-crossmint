@@ -3,11 +3,11 @@
 A React Native wallet application built with Expo, featuring seamless authentication, balance tracking, and USDC transfers via the Crossmint SDK.
 
 ## Features
-**Secure Authentication**: Built-in Crossmint email-based login.
-**Real-time Balance**: USDC balance tracking with optimized error handling.
-**Send & Receive**: Intuitive UI for transferring USDC.
-**Bank-App UI**: Clean, dark-mode compatible interface with "Max" buttons and validation.
-**Transaction Simulation**: "Staging Fund" button for testing balance updates.
++ **Secure Authentication**: Built-in Crossmint email-based login.
++ **Real-time Balance**: USDC balance tracking with optimized error handling.
++ **Send & Receive**: Intuitive UI for transferring USDC.
++ **Bank-App UI**: Clean, dark-mode compatible interface with "Max" buttons and validation.
++ **Transaction Simulation**: "Staging Fund" button for testing balance updates.
 
 ## Prerequisites
 Before you begin, ensure you have the following installed:
