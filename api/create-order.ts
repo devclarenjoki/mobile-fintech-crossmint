@@ -4,9 +4,18 @@ const USDC_ADDRESSES: Record<string, string> = {
     "solana": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
 };
 
-export const createOrder = async (walletAddress: string, email: string, chain: string) => {
+// FIX 1: Add 'amount: string' to the function arguments
+export const createOrder = async (
+    walletAddress: string, 
+    email: string, 
+    chain: string, 
+    amount: string // Accept the amount from the user
+) => {
     const usdcAddress = USDC_ADDRESSES[chain];
     const tokenLocator = `${chain}:${usdcAddress}`;
+
+    // Ensure amount is valid (basic check)
+    const cleanAmount = parseFloat(amount).toFixed(2);
 
     const response = await fetch("https://staging.crossmint.com/api/2022-06-09/orders", {
         method: "POST",
@@ -19,7 +28,8 @@ export const createOrder = async (walletAddress: string, email: string, chain: s
                 tokenLocator,
                 executionParameters: {
                     mode: "exact-in",
-                    amount: "10",
+                    // FIX 2: Use the dynamic 'cleanAmount' instead of hardcoded "10"
+                    amount: cleanAmount, 
                     maxSlippageBps: "500",
                 },
             }],
@@ -31,6 +41,13 @@ export const createOrder = async (walletAddress: string, email: string, chain: s
             recipient: { walletAddress },
         }),
     });
+
+    // Optional: Check if the HTTP response was successful before returning JSON
+    if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Crossmint API Error:", errorData);
+        throw new Error(errorData.message || `Order creation failed with status ${response.status}`);
+    }
 
     return response.json(); 
 };
