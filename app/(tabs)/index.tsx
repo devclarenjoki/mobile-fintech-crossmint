@@ -2,20 +2,13 @@ import { StyleSheet } from 'react-native';
 
 import DashboardScreen from '@/components/Dasboard/dashboard';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { useCrossmintAuth } from '@crossmint/client-sdk-react-native-ui';
-import { Redirect } from 'expo-router';
 
 export default function HomeScreen() {
-      const { status } = useCrossmintAuth();
-
-    if (status === "logged-out") {
-    return <Redirect href="/login" />;
-  }
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      >
-      <DashboardScreen/>
+    >
+      <DashboardScreen />
     </ParallaxScrollView>
   );
 }

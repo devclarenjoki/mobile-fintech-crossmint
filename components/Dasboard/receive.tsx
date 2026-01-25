@@ -1,3 +1,4 @@
+import formatAddress from "@/helpers/formatAddress";
 import React from "react";
 import { Pressable, Share, StyleSheet, Text, View } from "react-native";
 import QRCodeStyled from 'react-native-qrcode-styled';
@@ -25,7 +26,7 @@ export const ReceiveComponent = ({ address }: { address: string | string[] | und
                 <Text style={{color: '#666'}}>QR Code Ready</Text>
             </View> */}
             <View style={styles.addressBox}>
-                <Text style={styles.addressText}>{address}</Text>
+                <Text style={styles.addressText}>{formatAddress(displayAddress)}</Text>
             </View>
             <Pressable style={styles.copyButton} onPress={onShare}>
                 <Text style={styles.copyButtonText}>Share Address</Text>
@@ -35,11 +36,40 @@ export const ReceiveComponent = ({ address }: { address: string | string[] | und
 };
 
 const styles = StyleSheet.create({
-    container: { alignItems: 'center', padding: 20 },
-    title: { fontSize: 18, fontWeight: '700', marginBottom: 20 },
-    qrPlaceholder: { width: 200, height: 200, backgroundColor: '#eee', justifyContent: 'center', alignItems: 'center', marginBottom: 20, borderRadius: 20 },
-    addressBox: { backgroundColor: '#f0f0f0', padding: 15, borderRadius: 10, width: '100%' },
-    addressText: { textAlign: 'center', fontSize: 12, fontFamily: 'monospace' },
-    copyButton: { marginTop: 20, padding: 10 },
-    copyButtonText: { color: '#05b959', fontWeight: '600' }
+    container: { 
+        alignItems: 'center', 
+        padding: 20 
+    },
+    title: { 
+        fontSize: 18, 
+        fontWeight: '700', 
+        marginBottom: 20 
+    },
+    qrPlaceholder: { 
+        width: 200, 
+        height: 200, 
+        backgroundColor: '#eee', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        marginBottom: 20, 
+        borderRadius: 20 
+    },
+    addressBox: { 
+        backgroundColor: '#f0f0f0', 
+        padding: 15, 
+        borderRadius: 10, 
+        width: '70%' },
+    addressText: { 
+        textAlign: 'center', 
+        fontSize: 12, 
+        fontFamily: 'monospace' 
+    },
+    copyButton: { 
+        marginTop: 20, 
+        padding: 10 
+    },
+    copyButtonText: { 
+        color: '#05b959', 
+        fontWeight: '600' 
+    }
 });

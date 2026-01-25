@@ -1,4 +1,3 @@
-// api/create-order.ts
 const USDC_ADDRESSES: Record<string, string> = {
     "base-sepolia": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
     "polygon-amoy": "0x41e94eb019c0762f9bfcf9fb1e58725bfb0e7582",
@@ -33,5 +32,5 @@ export const createOrder = async (walletAddress: string, email: string, chain: s
         }),
     });
 
-    return response.json(); // Returns { orderId, clientSecret, order }
+    return response.json(); 
 };

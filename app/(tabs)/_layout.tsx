@@ -1,13 +1,19 @@
-import { Tabs } from 'expo-router';
+import { Redirect, Tabs } from 'expo-router';
 import React from 'react';
 
 import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useCrossmintAuth } from '@crossmint/client-sdk-react-native-ui';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { status } = useCrossmintAuth();
+
+  if (status === "logged-out") {
+    return <Redirect href="/login" />;
+  }
 
   return (
     <Tabs

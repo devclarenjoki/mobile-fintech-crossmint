@@ -102,7 +102,7 @@ export default function HistoryComponent() {
         />        <View style={styles.emptyStateContainer}>
           <Text style={styles.emptyStateTitle}>Activity feed</Text>
           <ThemedText style={{ textAlign: "center", overflow: "visible" }}>
-            To get started, add USDC to your account; once you send or receive funds, your history will appear instantly          </ThemedText>
+            To get started, add USDXM to your account; once you send or receive funds, your history will appear instantly          </ThemedText>
         </View>
       </SafeAreaView>
     );

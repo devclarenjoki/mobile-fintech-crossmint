@@ -1,8 +1,8 @@
 import { ReceiveComponent } from "@/components/Dasboard/receive";
-import { Ionicons } from '@expo/vector-icons';
+import Header from "@/components/ui/header";
 import { useTheme } from "@react-navigation/native";
 import { useLocalSearchParams, useRouter } from "expo-router"; // Import this
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ReceiveLayout() {
@@ -14,14 +14,10 @@ export default function ReceiveLayout() {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
-            {/* Added a Header so users can actually go back */}
-            <View style={styles.header}>
-                <Pressable onPress={() => router.back()} style={styles.backButton}>
-                    <Ionicons name="chevron-back" size={28} color={colors.text} />
-                </Pressable>
-                <Text style={[styles.title, { color: colors.text }]}>Receive</Text>
-                <View style={{ width: 40 }} /> 
-            </View>
+           <Header
+                title="Receive USDC"
+                colors={colors}
+            />
 
             <ReceiveComponent address={address} />
         </SafeAreaView>
