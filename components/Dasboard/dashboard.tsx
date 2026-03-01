@@ -12,7 +12,6 @@ const BRAND_GREEN = "#05b959";
 export default function DashboardScreen() {
     const { user, logout, status: authStatus } = useCrossmintAuth();
     
-    // FIX 1: Safe Destructuring (Prevents "Cannot convert null value to object")
     const walletHook = useWallet();
     const wallet = walletHook?.wallet;
     const walletStatus = walletHook?.status || "not-loaded";

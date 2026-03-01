@@ -31,11 +31,17 @@ export default function LoginScreen() {
     const [isPending, setIsPending] = useState(false);
     const loginProcessed = useRef(false);
 
-    const url = Linking.useLinkingURL();
-
     useEffect(() => {
-        if (url != null) createAuthSession(url);
-    }, [createAuthSession, url]);
+    const handleOAuthCallback = async (url: string) => {
+      if (url) {
+        console.log("OAuth callback URL:", url);
+        await createAuthSession(url);
+      }
+    };
+    Linking.getInitialURL().then((url: any) => { handleOAuthCallback(url); });
+    const subscription = Linking.addEventListener('url', (event) => { handleOAuthCallback(event.url); });
+    return () => { subscription?.remove(); };
+  }, [createAuthSession]);
 
     useEffect(() => {
         switch (status) {
